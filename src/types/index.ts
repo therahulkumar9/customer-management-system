@@ -1,0 +1,47 @@
+export interface Staff {
+  _id?: string
+  username: string
+  password: string
+  role: "Adder" | "Updater"
+  name: string
+  email: string
+  createdAt?: Date
+}
+
+export interface Customer {
+  _id?: string
+  name: string
+  email: string
+  phone?: string
+  location?: string
+  profession?: string
+  plan: {
+    name: string
+    startDate: Date
+    endDate: Date
+  }
+  paymentScreenshot: string
+  isCompanyMember: boolean
+  addedBy: string // Staff username who added this customer
+  createdAt?: Date
+  updatedAt?: Date
+}
+
+export interface AuthStaff {
+  username: string
+  role: "Adder" | "Updater"
+  name: string
+  email: string
+}
+
+export interface JWTPayload {
+  userId: string
+  role: "Adder" | "Updater"
+  username: string
+}
+
+export interface ApiResponse<T = unknown> {
+  message: string
+  data?: T
+  success?: boolean
+}
