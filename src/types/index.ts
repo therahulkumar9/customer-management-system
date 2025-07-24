@@ -36,7 +36,7 @@ export interface AuthStaff {
 
 export interface JWTPayload {
   userId: string
-  role: "Adder" | "Updater"
+  role: "Adder" | "Updater" | "Admin"
   username: string
 }
 
@@ -44,4 +44,38 @@ export interface ApiResponse<T = unknown> {
   message: string
   data?: T
   success?: boolean
+}
+
+export interface AdminUser {
+  username: string
+  role: "Admin"
+}
+
+export interface StaffWithStats {
+  _id: string
+  username: string
+  name: string
+  email: string
+  role: "Adder" | "Updater"
+  customersAdded: number
+  createdAt: Date
+}
+
+export interface CustomerSearchParams {
+  search?: string
+  planType?: string
+  status?: "active" | "expired"
+  memberType?: "company" | "customer"
+  dateFrom?: string
+  dateTo?: string
+}
+
+export interface AdminStats {
+  totalCustomers: number
+  activeCustomers: number
+  expiredCustomers: number
+  totalStaff: number
+  totalAdders: number
+  totalUpdaters: number
+  revenueByPlan: { planName: string; count: number }[]
 }
